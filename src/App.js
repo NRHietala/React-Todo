@@ -4,7 +4,7 @@ import ChoreList from './components/ChoreList';
 import ChoreForm from './components/ChoreForm';
 import './App.css';
 
-const initialChores = [
+const chores = [
   { task: "Rake leaves",
     id: 0,
     completed: false
@@ -19,7 +19,7 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      chores: initialChores
+      chores: chores
     }
   }
 
@@ -48,26 +48,27 @@ class App extends React.Component {
     console.log(newChores)
 
     this.setState({
-      chores:newChores 
+      chores:newChores
     });
   }
 
   filterCompletedChores = () => {
+    const newChores = this.state.chores.filter(chore => {
+      return (!chore.completed);
+    });
     this.setState({
-      chores: this.state.chores.filter(chore => {
-        return (!chore.completed)
-      })
+      chores: newChores
     })
   }
-
 
   render() {
     return (
       <div>
         <h2>React Class Components ToDo App</h2>
         <ChoreForm addChore={this.addChore}/>
-        <ChoreList chores={this.state.chores}
-        choreCompleted={this.choreCompleted}
+        <ChoreList
+        chores={this.state.chores}
+        filterCompletedChores={this.filterCompletedChores}
         strikeChore={this.strikeChore}
         />
       </div>

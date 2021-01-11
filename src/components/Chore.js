@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Chore(props) {
-  const { strikeChore, choreCompleted, chore: { task, id, completed } } = props;
+  const { strikeChore, chore: { task, id, completed } } = props;
 
   const handleClick = () => {
     strikeChore(id);

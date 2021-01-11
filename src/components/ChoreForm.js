@@ -16,10 +16,11 @@ class ChoreForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(this.state.inputValue)
     this.props.addChore(this.state.inputValue);
     this.setState({
       inputValue:""
-    })
+    });
   }
 
   render() {
@@ -28,14 +29,13 @@ class ChoreForm extends React.Component {
         <input
         type="text"
         name="chore"
-        id="choreInput"
         placeholder="Enter a new chore"
         onChange={this.handleChange}
         value={this.state.inputValue}
         />
         <button>Add Chore</button>
       </form>
-    )
+    );
   }
 }
 
