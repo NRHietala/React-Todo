@@ -46,10 +46,14 @@ class App extends React.Component {
 
     const newChores = [...this.state.chores, addedChore];
     console.log(newChores)
+    console.log(this.state.chores)
 
     this.setState({
-      chores:newChores
+      chores: newChores
     });
+
+    console.log(newChores)
+    console.log(this.state.chores)
   }
 
   filterCompletedChores = () => {
