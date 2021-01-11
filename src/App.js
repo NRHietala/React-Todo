@@ -38,13 +38,13 @@ class App extends React.Component {
   }
 
   addChore = choreName => {
-    const chore = {
+    const addedChore = {
       name:choreName,
       id: this.state.chores.length,
       completed: false
     };
 
-    const newChores = [...this.state.chores, chore];
+    const newChores = [...this.state.chores, addedChore];
     console.log(newChores)
 
     this.setState({
