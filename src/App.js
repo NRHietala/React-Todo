@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ChoreList from './components/ChoreList';
 import ChoreForm from './components/ChoreForm';
 import './App.css';
@@ -44,15 +43,12 @@ class App extends React.Component {
       completed: false
     };
 
-    const newChores = [...this.state.chores, addedChore];
-    console.log(newChores)
-    console.log(this.state.chores)
+    const updatedChores = [...this.state.chores, addedChore];
 
     this.setState({
-      chores: newChores
+      chores: updatedChores
     });
-
-    console.log(newChores)
+    console.log(updatedChores)
     console.log(this.state.chores)
   }
 
