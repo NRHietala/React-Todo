@@ -39,7 +39,7 @@ class App extends React.Component {
   addChore = choreName => {
     const addedChore = {
       name:choreName,
-      id: this.state.chores.length,
+      id: Date.now(),
       completed: false
     };
 
