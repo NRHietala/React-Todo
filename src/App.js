@@ -38,7 +38,7 @@ class App extends React.Component {
 
   addChore = choreName => {
     const addedChore = {
-      name:choreName,
+      task:choreName,
       id: Date.now(),
       completed: false
     };

@@ -16,7 +16,6 @@ class ChoreForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
     this.props.addChore(this.state.inputValue);
     this.setState({
       inputValue:""
