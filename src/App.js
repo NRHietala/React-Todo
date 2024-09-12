@@ -1,13 +1,76 @@
 import React from 'react';
+import ChoreList from './components/ChoreList';
+import ChoreForm from './components/ChoreForm';
+import './App.css';
+
+const chores = [
+  { task: "Rake leaves",
+    id: 0,
+    completed: false
+  },
+  { task: "Feed dog",
+    id: 1,
+    completed: false
+  },
+];
 
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
+  constructor(){
+    super();
+    this.state = {
+      chores: chores
+    }
+  }
+
+  strikeChore = choreId => {
+    this.setState({
+      chores:this.state.chores.map(chore => {
+        if(chore.id === choreId) {
+          return {
+            ...chore,
+            completed: !chore.completed
+          }
+        }
+        return chore;
+      })
+    });
+  }
+
+  addChore = choreName => {
+    const addedChore = {
+      task:choreName,
+      id: Date.now(),
+      completed: false
+    };
+
+    const updatedChores = [...this.state.chores, addedChore];
+
+    this.setState({
+      chores: updatedChores
+    });
+    console.log(updatedChores)
+    console.log(this.state.chores)
+  }
+
+  filterCompletedChores = () => {
+    const newChores = this.state.chores.filter(chore => {
+      return (!chore.completed);
+    });
+    this.setState({
+      chores: newChores
+    })
+  }
+
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
+        <h2>React Class Components ToDo App</h2>
+        <ChoreForm addChore={this.addChore}/>
+        <ChoreList
+        chores={this.state.chores}
+        filterCompletedChores={this.filterCompletedChores}
+        strikeChore={this.strikeChore}
+        />
       </div>
     );
   }
